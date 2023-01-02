@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter&family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;500&display=swap"
+        rel="stylesheet">
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/2e4262662b.js" crossorigin="anonymous"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <form class="color-picker" action="">
+            <fieldset>
+                <legend class="visually-hidden">Pick a color scheme</legend>
+                <label for="theme" class="visually-hidden">Light</label>
+                <input type="radio" name="theme" id="light" checked>
+
+                <label for="theme" class="visually-hidden">Dark</label>
+                <input type="radio" name="theme" id="dark">
+            </fieldset>
+        </form>
+    </header>
+    <main>
+        <section class="container">
+            <form id="login-form" class="form__box form__box--login" action="">
+                <fieldset class="form__box--main">
+                    <label class="form__text--medium form__label" for="username">Username
+                        <input class="form__input-field" type="text" id="username" name="username"
+                            placeholder="type Your name" required></label>
+                    <label class="form__text--medium form__label" for="password">Password
+                        <input class="form__input-field" type="password" id="password" name="password"
+                            placeholder="type Your password" required></label>
+                    <div class="form__switch-box">
+                        <label for="subscribe-1" class="gui-switch">
+                            <input type="checkbox" role="switch" id="subscribe-1">
+                            Subscribe to news
+                        </label>
+                    </div>
+                    <input type="submit" class="form__text--medium form__button form__button--fullwidth"
+                        value="Sign In">
+                    <a class="form__link form__text--medium" href="#">Forgot your password?</a>
+                    <div class="form__divider"></div>
+                    <div class="form__text--medium">or continue with</div>
+                    <div class="form__social-login">
+                        <button type="button" class="form__button form__button--social form__button--fullwidth"><i
+                                class="fa-brands fa-google"></i></button>
+                        <button type="button" class="form__button form__button--social form__button--fullwidth"><i
+                                class="fa-brands fa-facebook"></i></button>
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+        <section class="container">
+            <form id="contact-us" class="form__box form__box--contact" action="">
+                <fieldset class="form__box--main">
+                    <legend class="form__legend">
+                        <h2 class="form__legend--h2">Contact Us</h2>
+                    </legend>
+                    <label class="form__text--medium form__label wrap--200" for="input-1">Input Label
+                        <input class="form__input-field" type="text" id="input-1" name="input-1"
+                            placeholder="type Your name" required></label>
+                    <label class="form__text--medium form__label wrap--200" for="input-2">Input Label
+                        <input class="form__input-field" type="text" id="input-2" name="input-2"
+                            placeholder="type Your name" required></label>
+                    <label class="form__text--medium form__label wrap--200" for="input-3">Input Label
+                        <input class="form__input-field wrap--200" type="text" id="input-3" name="input-3"
+                            placeholder="type Your name" required></label>
+                    <label class="form__text--medium form__label wrap--200" for="input-4">Input Label
+                        <input class="form__input-field" type="text" id="input-4" name="input-4"
+                            placeholder="type Your name" required></label>
+                    <div class="form__switch-box">
+                        <input class="form__checkbox" type="checkbox" id="subscribe-2" name="subscribe-2">
+                        <label class="form__checkbox__label" for="subscribe-2">Subscribe to News</label>
+                    </div>
+                    <label class="form__text--extra-small form__label" for="message-1">Message
+                        <textarea class="form__text--medium form__input-field form__input-field--large" id="text"
+                            name="text" rows="9" cols="10" maxLength="500" placeholder="Type Message"
+                            required></textarea>
+                    </label>
+                    <div class="form--align-right">
+                        <input type="submit" class="form__text--medium form__button form__button--adaptive"
+                            value="Submit">
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+        <section class="container">
+            <div class="form__box form__box--contact-super">
+                <section class="form__box--side">
+                    <h5 class="side-title">Contact Information</h5>
+                    <p class="form__text--medium">Here’s some additional support text to help set user expectations.</p>
+                    <ul class="contacts-list form__text--medium">
+                        <li><a href="123-456-7890"><img src="assets/images/svg/icon-phone.svg">(303) 555-0105</a></li>
+                        <li><a href="mailto:support@minerva.com"><img
+                                    src="assets/images/svg/icon-mail.svg">support@minerva.com</a></li>
+                    </ul>
+                </section>
+                <form id="contact-us" class="" action="">
+
+                    <fieldset class="form__box--main">
+                        <legend class="form__legend">
+                            <h2 class="form__legend--h2">Contact Us</h2>
+                        </legend>
+                        <!-- textfields -->
+                        <label class="form__text--medium form__label wrap--200" for="input-1">Input Label
+                            <input class="form__input-field" type="text" id="input-1" name="input-1"
+                                placeholder="type Your name" required></label>
+                        <label class="form__text--medium form__label wrap--200" for="input-2">Input Label
+                            <input class="form__input-field" type="text" id="input-2" name="input-2"
+                                placeholder="type Your name" required></label>
+                        <label class="form__text--medium form__label wrap--200" for="input-3">Input Label
+                            <input class="form__input-field" type="text" id="input-3" name="input-3"
+                                placeholder="type Your name" required></label>
+                        <label class="form__text--medium form__label wrap--200" for="input-4">Input Label
+                            <input class="form__input-field" type="text" id="input-4" name="input-4"
+                                placeholder="type Your name" required></label>
+                        <label class="form__text--medium form__label" for="input-4">Input Label
+                            <input class="form__input-field" type="text" id="input-4" name="input-4"
+                                placeholder="type Your name" required></label>
+                        <label class="form__text--extra-small form__label" for="message-1">Message
+                            <!-- Text-area -->
+                            <textarea class="form__text--medium form__input-field form__input-field--large" id="text"
+                                name="text" rows="5" cols="33" maxLength="500" placeholder="Type Message"
+                                required></textarea>
+                        </label>
+                        <div class="form--align-right">
+                            <input type="submit" class="form__text--medium form__button form__button--adaptive"
+                                value="Submit">
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </section>
+        <section class="container">
+            <form id="contact-us" class="form__box form__box--contact" action="">
+                <fieldset class="form__box--main">
+                    <legend class="form__legend">
+                        <h2 class="form__legend--h2">Checkout</h2>
+                    </legend>
+                    <fieldset class="form__box--sub wrap--200">
+                        <legend class="form__legend--sub">
+                            <h2 class="form__legend--h4">Your Order</h2>
+                        </legend>
+                        <div class="form__list-box">
+                            <h5 class="form__list-box__header">Eggshell Plant Pot</h5>
+                            <ul class="form__list-box__order">
+                                <li>Size: Medium</li>
+                                <li>Qty: 1</li>
+                                <li>$25.00</li>
+                            </ul>
+                        </div>
+                    </fieldset>
+                    <div class="form__divider form__divider--hiding"></div>
+                    <fieldset class="form__box--sub wrap--200">
+                        <legend class="form__legend--sub">
+                            <h2 class="form__legend--h4">Delivery Details</h2>
+                        </legend>
+                        <div class="form__box__group">
+                            <div class="form__list-box">
+                                <h5 class="form__list-box__header">Adam Sandler</h5>
+                                <ul class="form__list-box__delivery">
+                                    <li>1234 Fake St</li>
+                                    <li>Milwaukee, WI 53203</li>
+                                </ul>
+                            </div>
+                            <div class="form__list-box">
+                                <h5 class="form__list-box__header">Shipping Speed</h5>
+                                <ul class="form__list-box__delivery">
+                                    <li>$7.00 No Rush Shipping</li>
+                                    <li>Arrives by 1/16/22</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="form__box--sub">
+                        <legend class="form__legend--sub">
+                            <h2 class="form__legend--h4">Payment Method</h2>
+                        </legend>
+                        <label class="form__text--medium form__payment-item--1" for="input-1">Input Label
+                            <input class="form__input-field" type="text" id="input-1" name="input-1"
+                                placeholder="type Your name" required></label>
+                        <label class="form__text--medium form__payment-item--2" for="input-1">Input Label
+                            <input class="form__input-field" type="text" id="input-1" name="input-1"
+                                placeholder="type Your name" required></label>
+                        <label class="form__text--medium form__payment-item--3" for="input-1">Input Label
+                            <input class="form__input-field" type="text" id="input-1" name="input-1"
+                                placeholder="type Your name" required></label>
+                    </fieldset>
+                    <div class="form--align-right">
+                        <input type="submit" class="form__text--medium form__button form__button--adaptive"
+                            value="Submit">
+                    </div>
+                </fieldset>
+            </form>
+        </section>
+    </main>
+    <footer></footer>
+</body>
+
+</html>

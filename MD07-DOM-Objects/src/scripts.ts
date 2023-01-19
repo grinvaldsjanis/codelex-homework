@@ -3,21 +3,19 @@ const placeholder = "Enter text here";
 const colorSet5 = ['#1FC2AE', '#EDF67D', '#CA7DF9', '#F9B5AC', '#EE7674'];
 const allBoxColor = "#18D5E1"
 
-let boxText1 = "";
-let boxText2 = "FAIL";
-let boxText3 = "";
-let boxText4 = "";
-let boxText5 = "0";
-let boxText6 = "0";
 
 //
 // ---Initialize base structure
 //
 const body = document.body;
-const wrapper = document.createElement('section'); wrapper.className = "wrapper";
-const menuContainer = document.createElement('div'); menuContainer.className = "container container--menu";
-const boxesContainer = document.createElement('div'); boxesContainer.className = "container container--boxes";
-const lastContainer = document.createElement('div'); lastContainer.className = "container container--last";
+const wrapper = document.createElement('section');
+wrapper.className = "wrapper";
+const menuContainer = document.createElement('div');
+menuContainer.className = "container container--menu";
+const boxesContainer = document.createElement('div');
+boxesContainer.className = "container container--boxes";
+const lastContainer = document.createElement('div');
+lastContainer.className = "container container--last";
 
 // -- Append structure
 body.append(wrapper);
@@ -96,9 +94,8 @@ lastContainer.append(button7);
 lastContainer.append(textField);
 lastContainer.append(text);
 
+//---------------------------------------------------------------------------
 // ---Text field function
-
-
 textField.placeholder = placeholder;
 text.textContent = placeholder;
 textField.addEventListener("input", () => {
@@ -110,15 +107,11 @@ textField.addEventListener("input", () => {
 });
 
 // ---First button changes 1st box to yellow
-let button1 = document.getElementById("button1") as HTMLButtonElement;
-let square1 = document.getElementById("square1") as HTMLButtonElement;
+let button1 = document.querySelector<HTMLButtonElement>("#button1");
+let square1 = document.querySelector<HTMLButtonElement>("#square1");
 button1.addEventListener("click", () => {
     square1.style.backgroundColor = 'yellow';
 });
-
-square1.onclick = () => {
-
-}
 // - change color on hover
 
 let originalColor1 = square1.style.backgroundColor;
@@ -143,7 +136,7 @@ button2.addEventListener("click", () => {
     }
 });
 
-// ---Third button makes third box dissapear
+// ---Third button makes third box disappear
 
 let button3 = document.getElementById("button3") as HTMLButtonElement;
 let square3 = document.getElementById("square3") as HTMLButtonElement;
@@ -151,7 +144,7 @@ button3.addEventListener("click", () => {
     square3.style.opacity = '0';
 });
 
-// ---Fourth button makes forth box dissapear and apear;
+// ---Fourth button makes forth box disappear and appear;
 
 let box4isVisible = true;
 let button4 = document.getElementById("button4") as HTMLButtonElement;
@@ -197,6 +190,7 @@ square5.addEventListener("mouseout", () => {
 let countN = 1;
 let button6 = document.getElementById("button6") as HTMLButtonElement;
 let square6 = document.getElementById("square6") as HTMLButtonElement;
+//
 button6.addEventListener("click", () => {
     button6.disabled = true;
     if (countN <= 10) {
@@ -226,6 +220,7 @@ button7.addEventListener("click", () => {
         square.style.backgroundColor = allBoxColor;
         square.style.opacity = "1"
     }
+
     body.style.backgroundColor = backgroundReal ? "white" : "black";
     text.style.color = backgroundReal ? "black" : "white";
 });

@@ -4,14 +4,7 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   entry: ['./src/scripts.ts', './src/styles.scss'],
-  mode: 'development',
-  devServer: {
-    port: 3000,
-    historyApiFallback: true,
-    client: {
-      logging: 'none',
-    },
-  },
+
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
   },

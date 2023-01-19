@@ -1,3 +1,5 @@
+import {cardColors,gameClicks,cardSymbols,gameTime,startingScore} from "./constants";
+
 let cardContent = [];
 let numOfMoves = 0;
 let activeCard = NaN;
@@ -5,9 +7,6 @@ let cardsChosen: number[] = [];
 let cardsIDChosen: number[] = [];
 let cardsWon: number[] = [];
 let clicks: number;
-const startingScore = 1000000;
-const gameTime = 60;
-const gameClicks = 60;
 let timeLeft: number;
 let scoreByTime: number;
 let scoreByClicks: number;
@@ -16,13 +15,12 @@ let cardObjs: Card[] = []
 let isWin = false;
 let lossReason: string;
 let resultText: string;
-let winText = `<b>Congratulations!<br>You activated extinguisher</b><br>and saved ${realScore} cash<br>in ${timeLeft} seconds<br>and ${clicks} clicks.`;
+
+const winText = `<b>Congratulations!<br>You activated extinguisher</b><br>and saved ${realScore} cash<br>in ${timeLeft} seconds<br>and ${clicks} clicks.`;
 const lossText = `You've lost all of ${startingScore}!<br><b>Try again!</b>`;
 const startText = `When you start the game, the self-destruction of the treasure safe will go off - the cash (a ${startingScore} in the paper) starts to burn. It is impossible for you to save all the money, but you can try to save some part.<br>In front of you will be the code panel of the fire extinguisher, in which 8 pairs of symbols are hidden. You must open all 16 symbols to activate the fire extinguishing system. The problem is that you only have ${gameTime} seconds or ${gameClicks} clicks at your disposal.<br>If one of these amounts expires, the money will be lost.<br><b>Good luck!</b>`;
 
 // *** Data for card content
-const cardSymbols = ["=>", "[]", "{}", "()", "&&", "||", "==", "!="];
-const cardColors = ["#9b5fe0", "#16a4d8", "#60dbe8", "#8bd346", "#efdf48", "#f9a52c", "#d64e12", "#12D6AB"]
 
 // List of card HTML elements to cycle through
 let cards = document.querySelectorAll<HTMLDivElement>(".card");
@@ -160,7 +158,6 @@ class Card {
             this.side = true;
             this.cardDiv.classList.add("card--front");
             this.cardDiv.classList.remove("card--back");
-            this.cardDiv.innerHTML = cardSymbols[this.symbol];
             this.cardDiv.innerHTML = cardSymbols[this.symbol];
             this.cardDiv.style.backgroundColor = cardColors[this.symbol]
             // this.cardDiv.style.animationIterationCount = "1"

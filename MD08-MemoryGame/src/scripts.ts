@@ -1,4 +1,3 @@
-let gameState = false; // Is game on
 let cardContent = [];
 let numOfMoves = 0;
 let activeCard = NaN;
@@ -15,9 +14,9 @@ let scoreByClicks: number;
 let realScore = 0;
 let cardObjs: Card[] = []
 let isWin = false;
-let lossReason:string;
+let lossReason: string;
 let resultText: string;
-let winText = `<b>Congratulations!<br>You activated extinguisher</b><br>and saved ${realScore}<br>in ${timeLeft} seconds<br>and ${clicks} clicks.`;
+let winText = `<b>Congratulations!<br>You activated extinguisher</b><br>and saved ${realScore} cash<br>in ${timeLeft} seconds<br>and ${clicks} clicks.`;
 const lossText = `You've lost all of ${startingScore}!<br><b>Try again!</b>`;
 const startText = `When you start the game, the self-destruction of the treasure safe will go off - the cash (a ${startingScore} in the paper) starts to burn. It is impossible for you to save all the money, but you can try to save some part.<br>In front of you will be the code panel of the fire extinguisher, in which 8 pairs of symbols are hidden. You must open all 16 symbols to activate the fire extinguishing system. The problem is that you only have ${gameTime} seconds or ${gameClicks} clicks at your disposal.<br>If one of these amounts expires, the money will be lost.<br><b>Good luck!</b>`;
 
@@ -55,6 +54,7 @@ startBtn.addEventListener("click", () => {
     timeLeft = gameTime;
     cardObjs = [];
     clicks = 0;
+    cardsWon = [];
     // Hiding results, start btn, instruction, 
     resultDisplay.style.display = "none";
     startBtn.style.display = "none";
@@ -64,6 +64,7 @@ startBtn.addEventListener("click", () => {
     scoreDisplay.style.display = "flex";
     scoreByTime = startingScore;
     scoreByClicks = startingScore;
+    realScore = 0;
     clearChosen(); //Clears temp card values from prev session
     initiateCards(); //Calls card initiation
     startTimer(); //Starts timer
@@ -76,7 +77,7 @@ let resultStyleRemove: string;
 function gameOver() {
     gameGrid.style.display = "none";
     if (isWin) {
-        resultText = `<b>Congratulations!<br>You activated extinguisher</b><br>and saved ${realScore}<br>in ${timeLeft} seconds<br>and ${clicks} clicks.`;
+        resultText = `<b>Congratulations!<br>You activated extinguisher</b><br>and saved ${realScore}<br>with ${timeLeft} seconds left<br>and ${clicks} clicks.`;
         resultStyleClass = "result-display--win";
         resultStyleRemove = "result-display--loss";
     } else {
@@ -84,7 +85,6 @@ function gameOver() {
         resultStyleClass = "result-display--loss";
         resultStyleRemove = "result-display--win";
     }
-
     resultDisplay.classList.add(resultStyleClass);
     resultDisplay.classList.remove(resultStyleRemove);
     resultDisplay.innerHTML = resultText;
@@ -125,8 +125,8 @@ function checkMatch() {
     }
     if (cardsWon.length === cards.length) {
         isWin = true;
-        stopTimer()
-        console.log(clicks);
+        stopTimer();
+        gameOver();
     }
 }
 
@@ -153,6 +153,7 @@ class Card {
             if (clicks === gameClicks) {
                 isWin = false;
                 lossReason = "All clicks used."
+                stopTimer()
                 gameOver();
             }
             document.querySelector("#clickDisplay").innerHTML = clicks + " clicks";
@@ -166,7 +167,7 @@ class Card {
             cardsChosen.push(this.symbol);
             cardsIDChosen.push(+this.cardDiv.id.split("-")[1]);
             //
-            if (cardsIDChosen[0] === cardsIDChosen[1] || cardsChosen.length > 2) {
+            if (cardsIDChosen[0] === cardsIDChosen[1]) {
                 // cardsChosen = [];
                 // cardsIDChosen = [];
                 // this.side = false;
@@ -205,7 +206,6 @@ function startTimer() {
 function stopTimer() {
     clearInterval(timer);
     isRunning = false;
-    gameOver();
 }
 
 function countdown() {

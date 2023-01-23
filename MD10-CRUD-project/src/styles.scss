@@ -1,0 +1,213 @@
+:root {
+  --clr-bg: #202020;
+  --clr-txt: #FFF;
+  --radius: 10px;
+  --clr-back: #353535;
+  --clr-time: #9b5fe0;
+  --clr-clicks: #16a4d8;
+  --clr-shadow: #144b5f;
+  --clr-points: #d64e12;
+  --clr-title: #757575;
+  --clr-emboss: #1b1b1b;
+  --clr-happy: #8bd346;
+}
+
+html {
+  font: 112.5%/1.625 -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+}
+
+h1 {
+  font-size: 40px;
+  font-weight: 700px;
+  font-family: Roboto;
+}
+
+h2,
+.h2 {
+  font-weight: 800;
+  text-rendering: optimizeLegibility;
+  font-size: 2rem;
+  line-height: 1.1;
+}
+
+a {
+  color: #4078c0;
+  text-decoration: none;
+}
+
+body {
+  font-variant-ligatures: none;
+  -webkit-font-smoothing: antialiased;
+  text-decoration-skip-ink: auto;
+  background: rgb(60, 62, 68);
+}
+
+.header {
+  padding: 30px;
+  display: inline-flex;
+  align-items: center;
+  height: 100px;
+  color: var(--clr-txt);
+}
+
+
+.cards-container {
+  max-width: 1920px;
+  margin: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 4.5rem 0px;
+  background: rgb(39, 43, 51);
+  min-height: calc(50vh - 60px);
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 4.5rem 0px;
+  flex-wrap: wrap;
+
+
+  @media (max-width: 40.625em) {
+    padding: 1.5rem;
+    width: 100%;
+  }
+}
+
+
+.card {
+  overflow: hidden;
+  position: relative;
+  max-width: 350px;
+  height: 650px;
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--radius);
+  box-shadow: rgb(0 0 0 / 10%) 0px 4px 6px -1px, rgb(0 0 0 / 6%) 0px 2px 4px -1px;
+
+  &__content {
+    width: 100%;
+    background: rgb(255, 255, 255);
+    border-radius: 0 0 var(--radius) var(--radius);
+
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__form {
+    background-color: var(--clr-txt);
+    border-radius: 0 0 var(--radius) var(--radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: .25rem;
+    border: 1px solid #ddd;
+    border-radius: .25rem;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 12px 20px;
+    border-radius: var(--radius);
+    margin: 20px;
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.2);
+
+    &--desc {
+      height: 200px;
+      font: inherit;
+      overflow-y: scroll;
+    }
+
+    &:focus {
+      border: 3px solid var(--clr-title);
+    }
+  }
+
+  &__image {
+    // width: 100%;
+    height: 200px;
+    margin: 0px;
+    object-position: center center;
+    object-fit: cover;
+  }
+
+  &__id {
+    position: absolute;
+    top: 20px;
+    height: auto;
+    left: 20px;
+    color: white;
+  }
+
+  &__title {
+    padding: 20px;
+  }
+
+  &__desc {
+    padding: 0 20px 0 20px;
+    line-height: 1.3;
+    height: 200px;
+    overflow-y: scroll;
+  }
+
+  &__menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+    margin: 20px;
+    width: 90%;
+  }
+
+  &__button {
+    color: white;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    margin-top: 10px;
+    background-color: rgb(131, 131, 131);
+
+    &--edit {
+      background-color: var(--clr-happy);
+    }
+
+    &--remove {
+      background-color: var(--clr-points);
+    }
+
+    &--save {
+      background-color: var(--clr-clicks);
+    }
+
+    &--cancel {
+      background-color: var(--clr-time);
+    }
+
+    &:hover {
+      background-color: darkblue;
+      cursor: pointer;
+    }
+  }
+
+  @media (max-width: 40.625em) {
+    height: initial;
+    width: 100%;
+  }
+}
+
+.create-card-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(0, 168, 0);
+  color: white;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: 700;
+  margin: 20px;
+}

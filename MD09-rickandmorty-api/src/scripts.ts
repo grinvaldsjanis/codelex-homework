@@ -26,7 +26,7 @@ function generateCards(results: any) {
         </div>
         </div>
         </article>`
-        ///
+
         cardContainer.appendChild(card);
     });
 }

@@ -22,7 +22,7 @@ function handleSearchForm() {
         if (capital) query += `&capital_like=${capital}`;
         if (currency) query += `&currency.name_like=${currency}`;
         if (language) query += `&language.name_like=${language}`;
-
+        qString=query;
         refreshUI(query);
     });
 }
@@ -111,7 +111,10 @@ const populateTable = (countries: Country[]) => {
                 header.classList.remove("sorted-asc", "sorted-desc", "active-sort");
             });
 
-            let query = `?_page=${currentPage}&_limit=${itemsPerPage}&_sort=${sortKey}&_order=${sortOrder}`;
+            qString
+            let query = `${qString}&_sort=${sortKey}&_order=${sortOrder}`;
+
+            // let query = `?_page=${currentPage}&_limit=${itemsPerPage}&_sort=${sortKey}&_order=${sortOrder}`;
 
             refreshUI(query);
         });

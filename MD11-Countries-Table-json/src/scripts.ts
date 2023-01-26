@@ -41,7 +41,6 @@ interface Country {
     idoCode: string
 }
 
-
 //---------------Render table------------------
 
 const populateTable = (countries: Country[]) => {

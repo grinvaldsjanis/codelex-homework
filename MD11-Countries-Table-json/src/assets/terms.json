@@ -1,0 +1,33 @@
+{
+    "countries": [
+        {
+            "name": "Afghanistan",
+            "code": "AF",
+            "capital": "Kabul",
+            "region": "AS",
+            "currency": {
+                "code": "AFN",
+                "name": "Afghan afghani",
+                "symbol": "؋"
+            },
+            "language": {
+                "code": "ps",
+                "name": "Pashto"
+            },
+            "flag": "https://restcountries.eu/data/afg.svg",
+            "dialling_code": "+93",
+            "isoCode": "004"
+        },
+        {
+            "name": "Albania",
+            "code": "AL",
+            "capital": "Tirana",
+            "region": "EU",
+            "currency": {
+                "code": "ALL",
+                "name": "Albanian lek",
+                "symbol": "L"
+            }
+        }
+    ]
+}

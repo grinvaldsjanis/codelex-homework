@@ -105,7 +105,7 @@ document.querySelector('.create-card-btn').addEventListener('click', () => {
     const delay = (ms: number) => { return new Promise(res => setTimeout(res, ms)); }
     (async () => {
         await delay(100);
-        renderCard(newCardData)
+        renderCard(newCardData);
     })();
 });
 

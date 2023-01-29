@@ -182,7 +182,7 @@ class CarouselThumbs extends CarouselIndic {
     this.thumbWrapper = this.createThumbWrapper();
     this.thumbs = this.createThumbs();
     this.swapThumbs();
-    this.updateThumb()
+    this.updateThumb();
   }
 
   swapThumbs() {
@@ -256,7 +256,7 @@ class CarouselFullscreen extends CarouselThumbs {
   createFullscreenBtn(): HTMLDivElement {
     const btn = document.createElement("div");
     btn.innerHTML = '<i class="fa-solid fa-expand"></i>';
-    btn.className = ("carousel__fullscreen-btn small-btn");
+    btn.className = "carousel__fullscreen-btn small-btn";
     btn.addEventListener("click", this.toggleFullscreen.bind(this));
     this.buttonWrapper.appendChild(btn);
     return btn;
@@ -265,7 +265,7 @@ class CarouselFullscreen extends CarouselThumbs {
   createSlideshowButton(): HTMLDivElement {
     const btn = document.createElement("div");
     btn.innerHTML = '<i class="fa-solid fa-circle-play"></i>';
-    btn.className = ("carousel__slideshow-btn small-btn");
+    btn.className = "carousel__slideshow-btn small-btn";
     btn.addEventListener("click", this.startSlideshow.bind(this));
     this.buttonWrapper.appendChild(btn);
     return btn;

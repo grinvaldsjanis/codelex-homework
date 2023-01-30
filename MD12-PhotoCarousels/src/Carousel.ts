@@ -39,7 +39,7 @@ export class Carousel {
       imgContainer.appendChild(image);
     });
 
-    this.rootElement.appendChild(imgContainer);
+    target.appendChild(imgContainer);
     return imgContainer;
   }
 

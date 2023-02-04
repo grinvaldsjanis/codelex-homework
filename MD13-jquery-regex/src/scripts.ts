@@ -15,9 +15,9 @@ $(document).ready(function () {
   });
 
   const validateForm = function (
-    nameInput: JQuery<HTMLElement>,
-    emailInput: JQuery<HTMLElement>,
-    passwordInput: JQuery<HTMLElement>
+    nameInput: JQuery<HTMLInputElement>,
+    emailInput: JQuery<HTMLInputElement>,
+    passwordInput: JQuery<HTMLInputElement>
   ): boolean {
     const name = nameInput.val() as string;
     const email = emailInput.val() as string;

@@ -1,0 +1,29 @@
+$dark-bgr-clr: #666666;
+$menu-txt-clr: #fff;
+$hover-clr: #ff1d9d;
+
+.content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    text-decoration: none;
+    
+    
+    & a {
+        color: $menu-txt-clr;
+        text-decoration: none;
+        font-family: 'Nanum Pen Script';
+        font-size: 2rem;
+        &:hover {
+            color: $hover-clr;
+        }
+    }
+}
+

@@ -1,0 +1,22 @@
+.row {
+    display: flex;
+    flex-direction: row;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+}
+
+.imgContainer {
+    max-width: 100%;
+    padding-left: 2rem;
+    
+    
+}
+
+.homeImage {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+}

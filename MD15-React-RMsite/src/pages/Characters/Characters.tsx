@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams } from "react-router-dom";
 import { useLocation } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import getData from "../../fetchers/getData";
@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 
 function Characters() {
   const location = useLocation();
-  const [pageSearch, setPageSearch] = useState('');
+  const [pageSearch, setPageSearch] = useState("");
 
   useEffect(() => {
     setPageSearch(location.search);
@@ -17,16 +17,16 @@ function Characters() {
 
   const { status, data } = useQuery({
     queryKey: ["characters"],
-    queryFn: () => getData(`https://rickandmortyapi.com/api/character/${pageSearch}`),
+    queryFn: () =>
+      getData(`https://rickandmortyapi.com/api/character/${pageSearch}`),
   });
 
- 
   // https://rickandmortyapi.com/api/character/?page=2"
 
-  function parseTail(url:string):string {
-  const arr = url.split("/").filter(Boolean);
-  const tail: string = arr[arr.length - 1];
-  return tail
+  function parseTail(url: string): string {
+    const arr = url.split("/").filter(Boolean);
+    const tail: string = arr[arr.length - 1];
+    return tail;
   }
 
   if (status === "loading") return <p>Loading...</p>;
@@ -49,15 +49,11 @@ function Characters() {
         )}
       </div>
       <div className="page-navigation">
-      { data.info.next ? (
-          
-          <Link to={`/characters/${parseTail(data.info.next)}`}>
-        NEXT
-      </Link>
+        {data.info.next ? (
+          <Link to={`/characters/${parseTail(data.info.next)}`}>NEXT</Link>
         ) : (
           <div> No Next </div>
-        )
-      }
+        )}
       </div>
     </div>
   );

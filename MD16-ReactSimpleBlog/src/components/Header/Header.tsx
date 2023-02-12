@@ -28,6 +28,11 @@ const HeaderBar = function () {
                   <Link to={`/about`}>About</Link>
                 </h4>
               </li>
+              <li>
+                <h4>
+                  <Link to={`/article/new`}>New Article</Link>
+                </h4>
+              </li>
             </ul>
           </nav>
         </div>

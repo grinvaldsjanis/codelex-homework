@@ -1,39 +1,124 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { getArticle } from "../../components/Cient";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import style from "./Article.module.scss";
+import { getArticle, updateArticle, imageURL, hostURL } from "../api/Client";
 
 type ArticleProps = {
-    articleId: string;
-  };
+  articleId: number;
+};
 
-const Article: React.FC<ArticleProps> = () => {
-  const { articleId } = useParams();
-  const [article, setArticle] = useState<any>({});
-  const [isEditMode, setIsEditMode] = useState(false);
-  // const history = useHistory();
+const Article: React.FC<ArticleProps> = ({ articleId }) => {
+  const queryClient = useQueryClient();
+  // const { articleId } = useParams<{ articleId: string }>();
 
-  const { status: articleStatus, error: articleError } = useQuery(
-    ["article", articleId],
-    () => getArticle(articleId!),
-    {
-      onSuccess: (data) => setArticle(data),
-    }
+  const [article, setArticle] = useState<{
+    title: string;
+    intro: string;
+    body: string;
+    image: string;
+  }>({
+    title: "",
+    intro: "",
+    body: "",
+    image: "",
+  });
+
+  const { data, error } = useQuery(["article", articleId], () =>
+    getArticle(articleId)
   );
 
+  const [isEditMode, setIsEditMode] = useState(false);
+
+  const { mutate, status: updateStatus } = useMutation({
+    mutationFn: () => updateArticle(articleId!, article),
+    onSuccess: () => {
+      queryClient.invalidateQueries(["article", articleId]);
+    },
+  });
+
+  
+
+  const handleEditClick = () => {
+    setArticle({
+      title: data.title,
+      intro: data.intro,
+      body: data.body,
+      image: data.image,
+    });
+    setIsEditMode(true);
+  };
+
+  const handleCancelClick = () => {
+    setIsEditMode(false);
+  };
+
+  const handleSaveClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setIsEditMode(false);
+    mutate();
+  };
+
+  const handleChange = (
+    e:
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+  ) => {
+    setArticle({ ...article, [e.target.name]: e.target.value });
+  };
+
+  if (status === "loading") return <p>Loading article...</p>;
+  if (error) return <div>Error</div>;
+  if (!data) return null;
+
   return (
-    <div>
-      {articleStatus === "loading" && <p>Loading article...</p>}
-      {articleError && articleError instanceof Error && (
-        <div>{articleError.message}</div>
-      )}
-      {articleStatus === "success" && article && (
+    <>
+      {isEditMode ? (
         <>
-          <h1>{article.title}</h1>
-          <p>{article.body}</p>
+          <form action="">
+            <input
+              type="text"
+              name="title"
+              value={article.title}
+              onChange={handleChange}
+            />
+            <textarea
+              name="intro"
+              value={article.intro}
+              onChange={handleChange}
+            />
+            <textarea
+              name="body"
+              value={article.body}
+              onChange={handleChange}
+            />
+            <button
+              onClick={handleSaveClick}
+              disabled={updateStatus === "loading"}
+            >
+              Save
+            </button>
+            <button onClick={handleCancelClick}>Cancel</button>
+          </form>
+        </>
+      ) : (
+        <>
+          <div>
+            <h1>{data.title}</h1>
+            <p>{data.intro}</p>
+            <p>{data.body}</p>
+            <button onClick={handleEditClick}>Edit</button>
+          </div>
+          <div>
+            <img
+              className={style.image}
+              src={hostURL + imageURL + data.image}
+              alt={"image"}
+            />
+          </div>
         </>
       )}
-    </div>
+    </>
   );
 };
 

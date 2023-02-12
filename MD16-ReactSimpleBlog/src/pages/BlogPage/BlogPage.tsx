@@ -1,13 +1,35 @@
 import { Link } from "react-router-dom";
-import { useQuery } from "@tanstack/react-query";
-import { getArticles, imageURL } from "../../components/Cient";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
+import {
+  getArticles,
+  deleteArticle,
+  imageURL,
+} from "../../components/api/Client";
 import style from "./BlogPage.module.scss";
+import { useState } from "react";
 
 const BlogPage: React.FC = () => {
-  const { status, data: articlesData } = useQuery(
-    ["comments"],
-    () => getArticles()
+  const queryClient = useQueryClient();
+  const [deletingArticleId, setDeletingArticleId] = useState<null | number>(
+    null
   );
+
+  const { status, data: articlesData } = useQuery(["articles"], () =>
+    getArticles()
+  );
+
+  const deleteArticleMutation = useMutation({
+    mutationFn: deleteArticle,
+    onSuccess: () => {
+      queryClient.invalidateQueries(["articles"]);
+      setDeletingArticleId(null);
+    },
+  });
+
+  const handleDeleteArticle = (id: number) => {
+    setDeletingArticleId(id);
+    deleteArticleMutation.mutate(id);
+  };
 
   if (status === "loading") {
     return <p>Loading...</p>;
@@ -30,10 +52,20 @@ const BlogPage: React.FC = () => {
           }) => (
             <article className={style.rowEpisode} key={article.id}>
               <Link to={`/article/${article.id}`}>
-                <img className={style.thumbNail} src={imageURL + article.image} alt="" />
+                <img
+                  className={style.thumbNail}
+                  src={imageURL + article.image}
+                  alt={"image"}
+                />
                 <h6>{article.title}</h6>
                 <p className="small-date">{article.author}</p>
               </Link>
+              <button
+                onClick={() => handleDeleteArticle(article.id)}
+                disabled={deleteArticleMutation.isLoading}
+              >
+                Delete
+              </button>
             </article>
           )
         )}

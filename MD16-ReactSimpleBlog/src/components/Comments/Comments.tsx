@@ -12,19 +12,24 @@ const Comments: React.FC<CommentsProps> = ({ articleId }) => {
 
   // const [comments, setComments] = useState<Array<{id: number, body: string}> | null>(null);
   const [deletingCommentId, setDeletingCommentId] = useState<null | number>(
-    null);
+    null
+  );
   const [newComment, setNewComment] = useState("");
 
-  const { status, data: comments, error } = useQuery({
-    queryKey: [["comments", articleId]],
+  const {
+    status,
+    data: comments,
+    error,
+  } = useQuery({
     queryFn: () => getComments(articleId),
+    queryKey: ["comments", articleId],
     // onSuccess: (res) => setComments(res),
   });
 
   const deleteCommentMutation = useMutation({
     mutationFn: deleteComment,
     onSuccess: () => {
-      queryClient1.invalidateQueries(["comments", articleId]);
+      queryClient1.invalidateQueries({ queryKey: ["comments", articleId] });
       setDeletingCommentId(null);
     },
   });
@@ -32,8 +37,8 @@ const Comments: React.FC<CommentsProps> = ({ articleId }) => {
   const postCommentMutation = useMutation({
     mutationFn: postComment,
     onSuccess: () => {
-      queryClient1.invalidateQueries(["comments", articleId]),
-      setNewComment("")
+      queryClient1.invalidateQueries({ queryKey: ["comments", articleId] }),
+        setNewComment("");
     },
   });
 
@@ -44,7 +49,7 @@ const Comments: React.FC<CommentsProps> = ({ articleId }) => {
 
   const handlePostComment = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    postCommentMutation.mutate({articleId, body:newComment});
+    postCommentMutation.mutate({ articleId, body: newComment });
   };
 
   if (error) {
@@ -58,14 +63,21 @@ const Comments: React.FC<CommentsProps> = ({ articleId }) => {
     <div>
       <h2>Comments</h2>
       <form onSubmit={handlePostComment}>
-        <input type="text" value={newComment} onChange={e => setNewComment(e.target.value)} />
+        <input
+          type="text"
+          value={newComment}
+          onChange={(e) => setNewComment(e.target.value)}
+        />
         <button type="submit">Post Comment</button>
       </form>
       {comments.map((comment: { id: number; body: string }) => (
         <div className={style.commentBox} key={comment.id}>
           <p>{comment.body}</p>
           {comment.id !== deletingCommentId && (
-            <button onClick={() => handleDeleteComment(comment.id)} disabled={deleteCommentMutation.isLoading}>
+            <button
+              onClick={() => handleDeleteComment(comment.id)}
+              disabled={deleteCommentMutation.isLoading}
+            >
               Delete
             </button>
           )}

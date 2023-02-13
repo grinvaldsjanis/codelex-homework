@@ -18,14 +18,20 @@
     },
     {
       "id": 3,
-      "title": "3 The Importance of Self-Care",
+      "title": "31 The Importance of Self-Care",
       "author": "typicode",
       "intro": "Taking care of oneself is crucial for both physical and mental well-being. In this blogpost, we explore various self-care practices and their benefits.",
       "image": "grinch-3.jpg",
-      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum, diam a sollicitudin suscipit, metus urna tristique est, vel euismod velit velit vel velit. Curabitur lobortis, elit quis malesuada mollis, lacus magna suscipit eros, at blandit ligula lacus vel quam. Aliquam pharetra, odio a congue tincidunt, diam nibh suscipit urna, vitae viverra ligula magna id urna. Sed euismod dapibus libero. Nullam tincidunt, mi eget suscipit scelerisque, nisl sem tempor nunc, non eleifend dolor elit id nisi. Ut at vestibulum nulla."
+      "body": "Lorem ipsum dolor sit amet, dddd consectetur adipiscing elit. Nullam condimentum, diam a sollicitudin suscipit, metus urna tristique est, vel euismod velit velit vel velit. Curabitur lobortis, elit quis malesuada mollis, lacus magna suscipit eros, at blandit ligula lacus vel quam. Aliquam pharetra, odio a congue tincidunt, diam nibh suscipit urna, vitae viverra ligula magna id urna. Sed euismod dapibus libero. Nullam tincidunt, mi eget suscipit scelerisque, nisl sem tempor nunc, non eleifend dolor elit id nisi. Ut at vestibulum nulla."
     }
   ],
-  "comments": [],
+  "comments": [
+    {
+      "articleId": 3,
+      "body": "dfgdg",
+      "id": 1
+    }
+  ],
   "user": [
     {
       "name": "typicode"

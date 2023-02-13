@@ -6,8 +6,14 @@ import About from "./pages/About/About";
 import HeaderBar from "./components/Header/Header";
 import ArticlePage from "./pages/ArticlePage/ArticlePage";
 import NewArticlePage from "./pages/NewArticlePage/NewArticlePage";
+import { getArticles } from "./components/api/Client";
+import { useQuery } from "@tanstack/react-query";
 
 const App = function () {
+  const { status, data: articlesData } = useQuery(["grinch"], () =>
+  getArticles()
+);
+
   return (
     <>
       <HeaderBar />

@@ -1,0 +1,1 @@
+json-server --watch blog-db.json --port 3004

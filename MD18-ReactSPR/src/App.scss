@@ -1,0 +1,92 @@
+$property: #162242;
+$numeric: #f08d49;
+$string: #4cff8f;
+$keyword: #66d9ef;
+$punctuation: #abb2bf;
+$background: #202329;
+$radius: 6px;
+$inline-background: #1b1f230d;
+$inline-color: #476582;
+$header-background: #646d7f;
+
+.section {
+  width: 100%;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  gap: 2rem;
+}
+
+.small-date {
+  font-size: 0.8rem;
+  padding-top: 3px;
+  color: $punctuation;
+}
+
+.button {
+  align-self: center;
+  width: auto;
+  padding: 1rem;
+  outline: none;
+  border-radius: 1rem;
+}
+
+.input__field {
+  box-sizing: border-box;
+  border: 2px solid #83e383;
+  border-radius: 4px;
+  background-color: #1add37;
+  font-size: 16px;
+  resize: none;
+}
+
+.input--intro {
+  width: 100%;
+  height: 50px;
+  padding: 12px 20px;
+}
+
+.input--body {
+  width: 100%;
+  height: 250px;
+  padding: 12px 20px;
+}
+
+
+.section {
+  height: 100%;
+}
+
+//--------------------
+
+select {
+  // A reset of styles, including removing the default dropdown arrow
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  padding: 0 1em 0 0;
+  margin: 0;
+  width: 100%;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: inherit;
+  line-height: inherit;
+
+  // Stack above custom arrow
+  z-index: 1;
+
+  // Remove dropdown arrow in IE10 & IE11
+  // @link https://www.filamentgroup.com/lab/select-css.html
+  &::-ms-expand {
+    display: none;
+  }
+
+  // Remove focus outline, will add on alternate element
+  outline: none;
+}

@@ -1,0 +1,39 @@
+.logo {
+    width: 60px;
+    height: 60px;
+}
+
+$dark-bgr-clr: #666666;
+$menu-txt-clr: #fff;
+$hover-clr: #658fdd;
+
+.content {
+    padding: 2rem;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    font-weight: 900;
+    text-decoration: none;
+    
+    
+    & a {
+        color: $menu-txt-clr;
+        text-decoration: none;
+        font-size: 2rem;
+        &:hover {
+            color: $hover-clr;
+        }
+    }
+}
+
+
+
+
+

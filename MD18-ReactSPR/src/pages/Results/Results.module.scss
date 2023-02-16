@@ -1,0 +1,27 @@
+.table {
+  min-width: 80vw;
+}
+
+.head {
+  color: rgb(11, 23, 61);
+}
+
+.headCell {
+  background-color: rgb(56, 108, 156);
+}
+
+.row {
+  height: 3rem;
+  border-bottom: 1px solid rgb(58, 67, 105);
+}
+
+.rowCell {
+  text-align: center;
+  line-height: 3rem;
+}
+
+.cell {
+  display: flex;
+  justify-content: center;
+}
+  

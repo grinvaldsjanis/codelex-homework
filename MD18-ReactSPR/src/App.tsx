@@ -9,7 +9,7 @@ import './i18n/config';
 
 
 const App = function () {
-  // const { t } = useTranslation();
+
 
   return (
     <>

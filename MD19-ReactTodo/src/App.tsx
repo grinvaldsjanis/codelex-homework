@@ -1,31 +1,14 @@
-import React from 'react';
-import { TaskContextProvider } from './TaskContext';
-import TaskList from './components/TaskList/TaskList';
+import { TaskProvider } from "./components/Context/TaskContext";
+import AddTask from "../src/components/AddTask/AddTask";
+import TaskList from "./components/TaskList/TaskList";
 
 const App = () => {
   return (
-    <TaskContextProvider>
+    <TaskProvider>
+      <AddTask />
       <TaskList />
-    </TaskContextProvider>
+    </TaskProvider>
   );
 };
 
 export default App;
-
-// <div>
-// <h1>Task Manager</h1>
-// {isLoading ? (
-//   <div>Loading...</div>
-// ) : (
-//   <>
-//     <TaskList  handleTaskUpdate={handleTaskUpdate} />
-//     <AddTaskForm
-//       newTaskTitle={newTaskTitle}
-//       newTaskPriority={newTaskPriority}
-//       handleTitleChange={handleTitleChange}
-//       handlePriorityChange={handlePriorityChange}
-//       handleSubmit={handleAddTask}
-//     />
-//   </>
-// )}
-// </div>

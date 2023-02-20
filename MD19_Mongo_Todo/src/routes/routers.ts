@@ -1,90 +1,80 @@
-import express, { Request, Response } from 'express';
-import Task from '../models/TaskSchema';
+import { TaskInterface } from "./../models/TaskSchema";
+import express, { NextFunction, Request, Response } from "express";
+import TaskModel from "../models/TaskSchema";
+import mongoose from "mongoose";
 
 const router = express.Router();
 
-// Fetching all tasks
-
-router.get("/tasks", async (req:Request, res:Response) => {
-	const posts = await Task.find()
-	res.send(posts)
-})
-
-
-// router.post("/tasks", async (req:Request, res:Response) => {
-// 	const task = new Task({
-// 		title: req.body.title,
-// 		done: req.body.done,
-//     priority: req.body.priority,
-// 	});
-// 	await post.save();
-// 	res.send(post);
-// })
-
-
-
-
-
-
-// router.get('/tasks', async (req: Request, res: Response) => {
-//   try {
-//     const tasks = await Task.find();
-//     res.json(tasks);
-//   } catch (err) {
-//     console.error(err);
-//     res.status(500).send('Error fetching tasks');
-//   }
-// });
+router.get("/", async (req: Request, res: Response) => {
+  try {
+    const tasks: TaskInterface[] = await TaskModel.find();
+    return res.status(200).json({ tasks });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Server error" });
+  }
+});
 
 // Create a new task
-router.post('/tasks', async (req: Request, res: Response) => {
-  const { title, description } = req.body;
-
-  const newTask = new Task({
-    title,
-    description,
-  });
-
+router.post("/", async (req: Request, res: Response) => {
   try {
-    const savedTask = await newTask.save();
-    res.json(savedTask);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Error creating task');
+    const { title, description, done, priority } = req.body;
+    const newTask: TaskInterface = new TaskModel({
+      title,
+      description,
+      done,
+      priority,
+    });
+    const savedTask: TaskInterface = await newTask.save();
+    return res.status(201).json({ task: savedTask });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Server error" });
   }
 });
 
 // Update a task
-router.put('/tasks/:id', async (req: Request, res: Response) => {
+router.put("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
-  const { title, description, done } = req.body;
-
   try {
-    const updatedTask = await Task.findByIdAndUpdate(
+    console.log("Data received by the server:", req.body);
+    if (!req.body.title) {
+      return res.status(400).json({ message: "Title is required" });
+    }
+    const updatedTask: TaskInterface | null = await TaskModel.findByIdAndUpdate(
       id,
       {
-        $set: { title, description, done, updatedAt: new Date() },
+        title: req.body.title,
+        done: req.body.done,
+        priority: req.body.priority,
       },
       { new: true }
     );
-    res.json(updatedTask);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Error updating task');
+    if (!updatedTask) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+    return res.status(200).json({ task: updatedTask });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Server error" });
   }
 });
 
-// Delete a task
-router.delete('tasks/:id', async (req: Request, res: Response) => {
+// DELETE request
+router.delete("/:id", async (req: Request, res: Response) => {
   const { id } = req.params;
-
   try {
-    const deletedTask = await Task.findByIdAndDelete(id);
-    res.json(deletedTask);
-  } catch (err) {
-    console.error(err);
-    res.status(500).send('Error deleting task');
+    const deletedTask: TaskInterface | null = await TaskModel.findByIdAndDelete(
+      id
+    );
+    if (!deletedTask) {
+      return res.status(404).json({ message: "Task not found" });
+    }
+    return res.status(200).json({ task: deletedTask });
+  } catch (error) {
+    console.error(error);
+    return res.status(500).json({ message: "Server error" });
   }
 });
 
-export default router
+export default router;

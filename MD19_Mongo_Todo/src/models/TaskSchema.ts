@@ -1,25 +1,34 @@
 import { Schema, model, Document } from "mongoose";
 
-export interface TaskInterface {
-  save: any;
+type Priority = "highest" | "high" | "moderate" | "low";
+
+export interface TaskInterface extends Document {
   title: string;
   done: boolean;
-  priority?: "highest" | "high" | "moderate" | "low";
+  priority?: Priority;
   createdAt: Date;
   updatedAt: Date;
 }
 
-const taskSchema = new Schema({
+const taskSchema = new Schema<TaskInterface>({
   title: {
     type: String,
     required: [true, "Title required"],
   },
-  priority: { type: String, enum: ["highest", "high", "moderate", "low"] },
-  done: { type: Boolean, default: false, required: [true, "done required"], },
+  priority: {
+    type: String,
+    enum: ["highest", "high", "moderate", "low"],
+    default: undefined,
+  },
+  done: {
+    type: Boolean,
+    default: false,
+    required: [true, "done required"],
+  },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
 });
 
-const TaskModel = model("Task", taskSchema, "tasks");
+const TaskModel = model<TaskInterface>("Task", taskSchema, "tasks");
 
 export default TaskModel;

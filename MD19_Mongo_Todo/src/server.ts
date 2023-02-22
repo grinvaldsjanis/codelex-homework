@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import express from "express";
 import router from "./routes/routers";
+import bodyparser from "body-parser";
 
 import cors from "cors";
 const app = express();
@@ -14,6 +15,7 @@ mongoose.set("strictQuery", false);
 mongoose.connect(dbURI).then(() => {
   console.log("Connected to database");
 
+  app.use(bodyparser.json());
   app.use("/tasks", router);
 
   app.get("/test", (req, res) => {

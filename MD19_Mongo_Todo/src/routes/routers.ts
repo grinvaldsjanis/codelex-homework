@@ -1,7 +1,7 @@
 import { TaskInterface } from "./../models/TaskSchema";
 import express, { NextFunction, Request, Response } from "express";
 import TaskModel from "../models/TaskSchema";
-import mongoose from "mongoose";
+import bodyparser from "body-parser";
 
 const router = express.Router();
 
@@ -18,6 +18,7 @@ router.get("/", async (req: Request, res: Response) => {
 // Create a new task
 router.post("/", async (req: Request, res: Response) => {
   try {
+    console.log("Data received by the server for post:", req.body);
     const { title, description, done, priority } = req.body;
     const newTask: TaskInterface = new TaskModel({
       title,

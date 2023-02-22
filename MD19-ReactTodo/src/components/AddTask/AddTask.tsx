@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import { TaskType } from "../../types";
-import { useTask } from "../Context/TaskContext";
+import { TaskContext } from "../Context/TaskContext";
 
 interface AddTaskProps {}
 
 const AddTask: React.FC<AddTaskProps> = () => {
-  const { addTask } = useTask();
   const [newTaskTitle, setNewTaskTitle] = useState<string>("");
   const [newTaskPriority, setNewTaskPriority] = useState<
     "highest" | "high" | "moderate" | "low"
@@ -22,43 +20,42 @@ const AddTask: React.FC<AddTaskProps> = () => {
     }
   };
 
-  const handleSubmitts = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>, addTask: (newTaskTitle: string) => Promise<void>) => {
     e.preventDefault();
-    const newTask: TaskType = {
-      title: newTaskTitle,
-      priority: newTaskPriority,
-      done: false,
-    };
-    addTask(newTask.title);
+    addTask(newTaskTitle);
     setNewTaskTitle("");
     setNewTaskPriority("low");
   };
 
   return (
-    <form onSubmit={handleSubmitts}>
-      <label htmlFor="new-task-title">Task:</label>
-      <input
-        type="text"
-        id="new-task-title"
-        value={newTaskTitle}
-        onChange={handleTitleChange}
-      />
+    <TaskContext.Consumer>
+      {({ addTask }) => (
+        <form onSubmit={(e) => handleSubmit(e, addTask)}>
+          <label htmlFor="new-task-title">Task:</label>
+          <input
+            type="text"
+            id="new-task-title"
+            value={newTaskTitle}
+            onChange={handleTitleChange}
+          />
 
-      <label htmlFor="new-task-priority">Priority:</label>
-      <select
-        id="new-task-priority"
-        value={newTaskPriority}
-        onChange={handlePriorityChange}
-      >
-        <option value="lowest">Lowest</option>
-        <option value="low">Low</option>
-        <option value="moderate">Moderate</option>
-        <option value="high">High</option>
-        <option value="highest">Highest</option>
-      </select>
+          <label htmlFor="new-task-priority">Priority:</label>
+          <select
+            id="new-task-priority"
+            value={newTaskPriority}
+            onChange={handlePriorityChange}
+          >
+            <option value="lowest">Lowest</option>
+            <option value="low">Low</option>
+            <option value="moderate">Moderate</option>
+            <option value="high">High</option>
+            <option value="highest">Highest</option>
+          </select>
 
-      <button type="submit">Add Task</button>
-    </form>
+          <button type="submit">Add Task</button>
+        </form>
+      )}
+    </TaskContext.Consumer>
   );
 };
 

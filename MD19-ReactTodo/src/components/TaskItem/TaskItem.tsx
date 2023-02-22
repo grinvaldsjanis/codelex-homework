@@ -1,66 +1,47 @@
-import React from "react";
-import { TaskType } from "../../types";
-import { useTask } from "../Context/TaskContext";
+import React, { useState, useContext } from "react";
+import { Priority, TaskType } from "../../types";
+import { TaskContext } from "../../components/Context/TaskContext";
+import { useQueryClient } from "@tanstack/react-query";
 
 type TaskItemProps = {
   task: TaskType;
 };
 
-const TaskItem: React.FC<TaskItemProps> = ({ task }) => {
-  const { updateTask } = useTask();
-  // console.log("TaskItem rendered with task", task);
+const TaskItem = ({ task }: TaskItemProps) => {
+  const { updateTask, deleteTask } = useContext(TaskContext);
+  const [done, setDone] = useState(task.done);
+  const [priority, setPriority] = useState(task.priority);
+  const queryClient = useQueryClient();
 
-  const handleTaskToggle = () => {
-    if (!task._id) return; // type guard
-    const updatedTask: TaskType = {
-      _id: task._id,
-      title: task.title,
-      done: !task.done,
-      priority: task.priority,
-      createdAt: task.createdAt,
-      updatedAt: task.updatedAt,
-    };
-    updateTask(task._id, updatedTask);
+  const handleCheckboxChange = () => {
+    setDone(!done);
+    updateTask(task._id!, { ...task, done: !done });
   };
 
-  const handlePriorityChange = (
-    event: React.ChangeEvent<HTMLSelectElement>
-  ) => {
-    if (!task._id) return; // type guard
-    const updatedTask: TaskType = {
-      _id: task._id,
-      title: task.title,
-      done: task.done,
-      priority: event.target.value as TaskType["priority"],
-      createdAt: task.createdAt,
-      updatedAt: task.updatedAt,
-    };
-    updateTask(task._id, updatedTask);
+  const handlePriorityChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const priorityValue = e.target.value as unknown as Priority;
+    setPriority(priorityValue);
+    updateTask(task._id!, { ...task, priority: priorityValue }).then(() => {
+      queryClient.invalidateQueries(["tasks"]);
+    });
   };
 
+  const handleDeleteTask = () => {
+    deleteTask(task._id!);
+  };
+  
   return (
-    <div className="task-item">
-      <input type="checkbox" checked={task.done} onChange={handleTaskToggle} />
-      <span className={task.done ? "task-title task-done" : "task-title"}>
-        {task.title}
-      </span>
-      <select value={task.priority} onChange={handlePriorityChange}>
+    <li>
+      <input type="checkbox" checked={done} onChange={handleCheckboxChange} />
+      <span>{task.title}</span>
+      <select value={priority} onChange={handlePriorityChange}>
         <option value="low">Low</option>
-        <option value="medium">Medium</option>
+        <option value="moderate">Moderate</option>
         <option value="high">High</option>
+        <option value="highest">Highest</option>
       </select>
-
-      {task.createdAt && (
-        <span className="task-created-at">
-          {new Date(task.createdAt).toLocaleString()}
-        </span>
-      )}
-      {task.updatedAt && (
-        <span className="task-updated-at">
-          {new Date(task.updatedAt).toLocaleString()}
-        </span>
-      )}
-    </div>
+      <button onClick={handleDeleteTask}>Delete</button>
+    </li>
   );
 };
 

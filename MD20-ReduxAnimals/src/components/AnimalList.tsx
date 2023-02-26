@@ -46,10 +46,10 @@ const AnimalList = () => {
         selectedSpecies={selectedSpecies}
         setSelectedSpecies={setSelectedSpecies}
       />
-      <Container>
+      <Container fluid>
         <Row>
           {filteredAnimals.map((animal) => (
-            <Col>
+            <Col md-1>
               <AnimalCard
                 key={animal.id}
                 animal={animal}

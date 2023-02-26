@@ -18,7 +18,7 @@ const AnimalCard: React.FC<Props> = ({ animal, onDelete }) => {
   };
 
   return (
-    <Card style={{ padding: "1rem"}}>
+    <Card style={{ margin: "0.5rem", padding: "1rem", width: "250px"}}>
       <Card.Title>{animal.name}</Card.Title>
       <Card.Text>{animal.species}</Card.Text>
       <CardImg  src={animal.imageUrl} alt={animal.name} />

@@ -1,4 +1,4 @@
-##Animal cards app
+## Animal cards app
 
 Using React, Redux, json-server, bootstrap.
 

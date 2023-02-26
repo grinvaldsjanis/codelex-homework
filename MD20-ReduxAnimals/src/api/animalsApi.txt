@@ -1,0 +1,49 @@
+import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { Animal } from "../types";
+import { setAnimals } from "../store/animalsApiSlice";
+
+export const animalsApi = createApi({
+  reducerPath: "animalsApi",
+  baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3004" }),
+  tagTypes: ["Animal"],
+  endpoints: (builder) => ({
+    getAnimals: builder.query<Animal[], void>({
+      query: () => "/animals",
+      transformResponse: (data: Animal[]) => {
+        // Dispatch setAnimals action here
+        setAnimals(data);
+        return data;
+      },
+      providesTags: (result) =>
+        result
+          ? result.map(({ id }) => ({ type: "Animal", id } as const))
+          : [{ type: "Animal", id: "LIST" }],
+    }),
+
+    addAnimal: builder.mutation<Animal, Omit<Animal, "id">>({
+      query: (animal) => ({
+        url: "/animals",
+        method: "POST",
+        body: animal,
+      }),
+      invalidatesTags: [{ type: "Animal", id: "LIST" }],
+    }),
+
+    removeAnimal: builder.mutation<void, number>({
+      query: (id) => ({
+        url: `/animals/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: (result, error, arg: number) => [
+        { type: "Animal", id: arg },
+        { type: "Animal", id: "LIST" },
+      ],
+    }),
+  }),
+});
+
+export const {
+  useGetAnimalsQuery,
+  useAddAnimalMutation,
+  useRemoveAnimalMutation,
+} = animalsApi;

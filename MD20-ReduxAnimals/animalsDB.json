@@ -1,0 +1,64 @@
+{
+  "animals": [
+    {
+      "name": "Cat",
+      "species": "Felis catus",
+      "imageUrl": "https://picsum.photos/id/40/300/300",
+      "id": "gfsr_sG"
+    },
+    {
+      "name": "Human",
+      "species": "Homo Sapiens",
+      "imageUrl": "https://picsum.photos/id/64/300/300",
+      "id": "WDjDRFb"
+    },
+    {
+      "name": "Dog",
+      "species": "Canis familiaris",
+      "imageUrl": "https://picsum.photos/id/169/300/300",
+      "id": "-conyn8"
+    },
+    {
+      "name": "Cattle",
+      "species": "Bos Taurus",
+      "imageUrl": "https://picsum.photos/id/200/300/300",
+      "id": "b30D1aB"
+    },
+    {
+      "name": "Leopard",
+      "species": "Panthera pardus",
+      "imageUrl": "https://picsum.photos/id/219/300/300",
+      "id": "d2-HrXN"
+    },
+    {
+      "name": "Pelican",
+      "species": "Pelecanus onocrotalus",
+      "imageUrl": "https://picsum.photos/id/244/300/300",
+      "id": "2pm6FBH"
+    },
+    {
+      "name": "Gull",
+      "species": "Genera",
+      "imageUrl": "https://picsum.photos/id/275/300/300",
+      "id": "0ZiYj87"
+    },
+    {
+      "name": "Bear",
+      "species": "Ursus",
+      "imageUrl": "https://picsum.photos/id/433/300/300",
+      "id": "MyrLY-a"
+    },
+    {
+      "name": "Eagle",
+      "species": "Haliaeetus",
+      "imageUrl": "https://picsum.photos/id/538/300/300",
+      "id": "WbN3Ea0"
+    },
+    {
+      "name": "Deer",
+      "species": "Cervus",
+      "imageUrl": "https://picsum.photos/id/577/300/300",
+      "id": "SetPJwP"
+    }
+  ]
+}

@@ -1,3 +1,5 @@
+## This project is postponed - not finished due to the new version of NextJs and dificulties to implement some new concepts. Will be continued.
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started

@@ -12,7 +12,7 @@ interface Item {
   styleUrls: ['./item-list.component.scss'],
 })
 export class ItemListComponent {
-  items: Item[] = [
+  items = [
     { name: 'Web Development', cost: 300.5, active: false },
     { name: 'Design', cost: 400.75, active: false },
     { name: 'Integration', cost: 250.25, active: false },

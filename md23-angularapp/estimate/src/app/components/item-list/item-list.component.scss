@@ -1,6 +1,7 @@
 
 $radius: 4px;
 $item-padding: 20px;
+$text-color: white;
 
 .items-container {
   width: 400px;
@@ -31,7 +32,7 @@ $item-padding: 20px;
 
 .item-name,
 .item-cost {
-  color: #fff;
+  color: $text-color;
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: 700;
@@ -53,7 +54,7 @@ $item-padding: 20px;
   align-items: center;
   height: 45px;
   padding: 0 $item-padding;
-  border-top: 1px solid white;
+  border-top: 1px solid $text-color;
   margin: 8px 0;
   cursor: pointer;
 }

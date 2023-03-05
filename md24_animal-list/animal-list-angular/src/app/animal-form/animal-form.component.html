@@ -1,0 +1,28 @@
+<div>
+<form [formGroup]="animalForm" (ngSubmit)="addNewAnimal()">
+  
+    <mat-form-field appearance="outline">
+      <mat-label>Name</mat-label>
+      <input
+        required
+        matInput type="text"
+        formControlName="name"
+        placeholder="Type name"
+    /></mat-form-field>
+ 
+ 
+    <mat-form-field appearance="outline">
+      <mat-label for="aclass">Class:</mat-label>
+      <mat-select formControlName="aclass" id="aclass">
+        <mat-option
+          *ngFor="let classOption of classOptions"
+          [value]="classOption"
+        >
+          {{ classOption }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+ 
+  <button mat-raised-button>ADD</button>
+</form>
+</div>

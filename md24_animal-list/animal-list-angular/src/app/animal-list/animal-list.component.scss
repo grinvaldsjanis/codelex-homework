@@ -1,0 +1,17 @@
+.mat-mdc-list-item-icon {
+    color: rgba(0, 0, 0, 0.54);
+  }
+
+  .list-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  .list-text {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    align-items: center;
+  }

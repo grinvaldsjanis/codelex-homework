@@ -1,0 +1,11 @@
+<div class="page-content">
+  <app-animal-form (addAnimal)="onSubmit($event)"></app-animal-form>
+  <mat-divider></mat-divider>
+  <app-mammal-switch
+  (filterRequest)="filterMammals($event)"
+></app-mammal-switch>
+  <app-animal-list
+    [listedAnimals]="listedAnimals"
+    (deleteRequest)="deleteAnimal($event)"
+  ></app-animal-list>
+</div>

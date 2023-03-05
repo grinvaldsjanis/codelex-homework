@@ -1,0 +1,9 @@
+<div class="switch-box">
+    <mat-slide-toggle
+      [checked]="checked"
+      (change)="checked = !checked"
+      (click)="filterRequest.emit(checked)"
+    >
+    Mammals only
+    </mat-slide-toggle>
+</div>

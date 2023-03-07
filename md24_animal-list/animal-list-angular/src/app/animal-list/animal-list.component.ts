@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Animal } from 'src/utils/animal.interface';
+import { Animal } from 'src/app/utils/animal.interface';
 
 @Component({
   selector: 'app-animal-list',

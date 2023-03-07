@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Animal } from '../utils/animal.interface';
+import { Animal } from './utils/animal.interface';
 import { catchError, tap } from 'rxjs/operators';
 
 @Injectable({
@@ -42,13 +42,9 @@ export class AnimalService {
       aclass: animal.aclass,
     };
     return this.http.post<Animal>(this.apiUrl, data).pipe(
-      tap((addedAnimal: Animal) => {
-        console.log(`Added animal with data ${data}`);
-      }),
       catchError(this.handleError)
     );
   }
-  
 
   deleteAnimal(animalId: string): Observable<void> {
     console.log(`deleteAnimal called with id: ${animalId}`);

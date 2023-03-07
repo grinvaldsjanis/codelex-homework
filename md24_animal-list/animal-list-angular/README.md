@@ -1,4 +1,6 @@
-# AnimalList
+## AnimalList and TaskList
+
+This is an example Angular application that includes routing between two pages: one for displaying a list of animals and another for displaying a task list. The animal data is stored in a remote Mongo database, while the task list is stored locally and is cleared after the page is refreshed.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
 

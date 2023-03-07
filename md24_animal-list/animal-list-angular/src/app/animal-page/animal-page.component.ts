@@ -1,6 +1,6 @@
 import { AnimalService } from './../animal-service.service';
 import { Component } from '@angular/core';
-import { Animal } from 'src/utils/animal.interface';
+import { Animal } from 'src/app/utils/animal.interface';
 
 @Component({
   selector: 'app-animal-page',
@@ -17,18 +17,18 @@ export class AnimalPageComponent {
       this.animals = res;
       this.filterMammals(false);
     });
-    
   }
 
   ngOnInit() {
-    this.getAllAnimals(); 
-   
+    this.getAllAnimals();
   }
 
   deleteAnimal = (animalId: string) => {
     this.animalService.deleteAnimal(animalId).subscribe(
       () => {
-        this.listedAnimals = this.animals.filter((animal) => animal.id !== animalId);
+        this.listedAnimals = this.animals.filter(
+          (animal) => animal.id !== animalId
+        );
       },
       (error) => {
         console.log(error);
@@ -44,9 +44,10 @@ export class AnimalPageComponent {
   }
 
   filterMammals(filter: boolean) {
-    
     if (filter) {
-      this.listedAnimals = this.animals.filter((animal) => animal.aclass === "mammal");
+      this.listedAnimals = this.animals.filter(
+        (animal) => animal.aclass === 'mammal'
+      );
     } else {
       this.listedAnimals = this.animals;
     }

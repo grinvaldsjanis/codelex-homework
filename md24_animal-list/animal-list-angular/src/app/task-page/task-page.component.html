@@ -1,0 +1,10 @@
+<div class="page-content">
+  <h1>Task List</h1>
+  <app-task-form></app-task-form>
+  <mat-divider></mat-divider>
+  <app-task-list
+    [tasks]="(tasks$ | async) ?? []"
+    (deleteTask)="deleteTask($event)"
+    (changeStatus)="changeStatus($event)"
+  ></app-task-list>
+</div>

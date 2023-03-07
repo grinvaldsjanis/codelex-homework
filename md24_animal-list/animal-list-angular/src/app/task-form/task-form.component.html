@@ -1,0 +1,15 @@
+<div>
+  <form [formGroup]="taskForm" (ngSubmit)="onSubmit()">
+    
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input
+          required
+          matInput type="text"
+          formControlName="name"
+          placeholder="Type name"
+      /></mat-form-field>
+   
+    <button mat-raised-button>ADD</button>
+  </form>
+  </div>

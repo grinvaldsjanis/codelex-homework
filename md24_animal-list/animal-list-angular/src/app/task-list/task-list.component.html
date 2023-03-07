@@ -1,0 +1,23 @@
+<div>
+  <h2>List of animals</h2>
+  <mat-list>
+    <mat-list-item
+      *ngFor="let task of tasks || []"
+      class="list-item"
+      (click)="onChangeStatus(task)"
+      [class.completed-task]="task.status === 'done'"
+      [class.not-started-task]="task.status === 'not started'"
+      [class.in-process-task]="task.status === 'in process'"
+    >
+      <div class="list-item">
+        <div class="list-text">
+          <h4>{{ task.name }}</h4>
+          <P>{{ task.status }}</P>
+        </div>
+        <button class="button-delete" (click)="onDeleteTask(task.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </div>
+    </mat-list-item>
+  </mat-list>
+</div>

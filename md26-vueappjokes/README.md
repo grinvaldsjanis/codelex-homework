@@ -1,7 +1,6 @@
 # VUE Jokes App using API and json server for storing favorites
 
-
-![App preview](/app-preview.gif "App Preview")
+![app-preview](https://user-images.githubusercontent.com/6594177/224387339-622f055e-ac16-41b4-a63e-f27b04c03fca.gif "App Preview")
 
 ## Project Setup
 

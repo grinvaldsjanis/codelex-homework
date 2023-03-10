@@ -17,6 +17,7 @@ json-server --watch jokes-db.json --port 3004
 ### Dev, preview mode [In Browzer](http://localhost:5173/)
 
 ```sh
+cd /jokes-app
 npm run dev
 ```
 

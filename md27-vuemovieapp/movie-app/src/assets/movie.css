@@ -1,0 +1,159 @@
+.movie-container {
+  background-color: #dfdfdf;
+  display: flex;
+  display: flex;
+  flex-wrap: wrap;
+  /* flex-direction: column; */
+  border-radius: 1rem;
+  margin-bottom: 2rem;
+  overflow: hidden;
+  filter: drop-shadow(5px 5px 5px rgba(0, 0, 0, 0.3));
+}
+
+.movie-container > div {
+  width: 100%;
+}
+
+.movie-image-part {
+  position: relative;
+  height: 400px;
+}
+
+.movie-poster {
+  min-width: 100%;
+  min-height: 100%;
+  object-fit: cover;
+}
+
+.movie-details-box {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 1rem;
+  padding: 0.5rem;
+}
+
+@media (min-width: 920px) {
+  .movie-container > div {
+    flex-grow: 1;
+    width: 33%;
+  }
+
+  .movie-image-part {
+    position: relative;
+    height: auto;
+    overflow: hidden;
+  }
+
+  .movie-poster {
+    object-fit: cover;
+  }
+
+  .movie-details-box {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 0.5rem;
+  }
+}
+
+.detail-name {
+  font-weight: 700;
+}
+
+.detail-row > span {
+  display: flex;
+  flex-basis: 50px;
+}
+
+.movie-title {
+  font-size: 2rem;
+  text-align: center;
+  font-weight: 300;
+}
+.icon {
+  fill: rgb(72, 100, 136);
+  width: 1rem;
+}
+
+.fav-icon {
+  max-width: 3rem;
+  padding: 0 0.5rem;
+}
+
+.movie-middle-part {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.movie-details-part {
+  gap: 0.5rem;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-left: 1px solid rgb(194, 194, 194);
+}
+
+.icon-detail {
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  gap: 0.5rem;
+  height: 1.5rem;
+  flex-wrap: nowrap;
+}
+
+.movie-rating {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  height: 2rem;
+  margin: 2rem 0;
+  width: 100%;
+}
+
+.movie-poster {
+  height: 100%;
+  -o-object-fit: cover;
+  object-fit: cover;
+  -o-object-position: center;
+  object-position: center;
+}
+
+.main-details {
+  display: flex;
+}
+
+.button-favorite {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  padding: 0.5rem;
+  background-color: gold;
+  outline: none;
+  border: none;
+  margin: 1rem;
+  border-radius: 1rem;
+}
+
+.fav-button-text {
+  font-weight: 700;
+}
+
+.heart-fav {
+  fill: red;
+}
+
+.heart-notfav {
+  fill: rgb(160, 160, 160);
+}

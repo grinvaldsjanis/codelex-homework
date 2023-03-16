@@ -16,6 +16,7 @@ export const useMoviesStore = defineStore('movies', {
       page: 1
     }
   },
+  
   actions: {
     async getAllMovies(keyword: string) {
       this.isLoading = true;
@@ -36,7 +37,6 @@ export const useMoviesStore = defineStore('movies', {
       }
     },
     
-
     async nextPage(page: number) {
       const keyword = localStorage.getItem('keyword')
         ? localStorage.getItem('keyword')

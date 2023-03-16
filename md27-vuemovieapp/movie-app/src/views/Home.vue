@@ -12,7 +12,7 @@ import { onMounted, ref, type Ref } from 'vue'
 import Movies from '@/components/Movies.vue'
 import IsLoading from '@/components/IsLoading.vue'
 import { useMoviesStore } from '@/store/movies'
-import type {MovieType} from '@/types'
+import type { MovieType } from '@/types'
 
 export default {
   name: 'Home',
@@ -62,5 +62,4 @@ export default {
 }
 </script>
 
-<style scoped>
-</style>
+<style scoped></style>

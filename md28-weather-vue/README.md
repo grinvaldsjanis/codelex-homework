@@ -6,7 +6,7 @@
 This is a weather app made in Vue, using Typescript, Pinia, Router.
 data are fetched from https://openweathermap.org/
 To tring Yourself, You will need to get Your own API key.
-You will also need axios and lodash for debaunce.
+You will also need axios and lodash for debounce
 
 Made with VUE
 

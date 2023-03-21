@@ -1,8 +1,8 @@
 import axios from 'axios'
 import type ForecastData from '@/types/ForecastData'
 
-// const apiKey:string | undefined = process.env.VUE_APP_WEATHER_API_KEY
-const apiKey = '...'
+const apiKey: string | undefined = import.meta.env.VITE_APP_WEATHER_API_KEY
+// const apiKey = '...'
 
 export const fetchWeatherData = async (latitude: number, longitude: number, unitType: string) => {
   const url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unitType}`

@@ -34,7 +34,7 @@ import { ref, computed, onMounted, watch } from 'vue'
 import { useWeatherStore } from '@/store/store'
 import { fetchWeatherData } from '@/utils/weatherAPI'
 import { clientGeolocation } from '@/utils/clientGeolocation'
-import WindArrow from '@/components/icons/windArrow.vue'
+import WindArrow from '@/components/icons/WindArrow.vue'
 
 export default {
   name: 'HomeView',
@@ -184,7 +184,7 @@ export default {
 }
 .wind {
   display: flex;
-  gap: .5rem;
+  gap: 0.5rem;
 }
 .windArrow-box {
   width: 1.3rem;
